@@ -5,6 +5,12 @@ conexion = psycopg2.connect(host="localhost", database="Prueba", user="postgres"
 cur = conexion.cursor()
 # Ejecutamos una consulta SQL
 cur.execute( "SELECT nombre, apellidos FROM empleados" )
+for nombre, apellidos in cur.fetchall() :
+    print (nombre, apellidos)
+print('despues de insert')
+
+cur.execute( "INSERT INTO empleados (nombre, apellidos) VALUES ('pepin', 'memim');")
+cur.execute( "SELECT nombre, apellidos FROM empleados" )
 
 # Recorremos los resultados y los mostramos
 for nombre, apellidos in cur.fetchall() :

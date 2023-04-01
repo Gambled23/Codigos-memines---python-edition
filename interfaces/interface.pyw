@@ -15,7 +15,7 @@ miFrame.pack(anchor='ne') #Meter frame dentro de raiz
 #miFrame.pack(anchor='ne', fill = 'x')
 #fill es para rellenar la raiz hacia los costados, fill both se expande hacia los lados y hacia abajo
 
-
+#*T0DOS ESTOS CONFIGS SE PUEDEN APLICAR A LA RAIZ
 miFrame.config(bg='red')
 miFrame.config(width='600', height='150') #La raiz se adapta a el tamaño de la raiz, pero se puede expandir
 miFrame.config(border='25') #Establecer tamaño de borde

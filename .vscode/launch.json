@@ -8,8 +8,7 @@
             "name": "Python: Archivo actual",
             "type": "python",
             "request": "launch",
-            "program": "${file}",
-            "console": "externalTerminal"
+            "program": "${file}"
         }
     ]
 }

@@ -5,6 +5,9 @@ miFrame = Frame(root)
 
 miFrame.pack()
 
+operacion = ''
+resultado = 0
+
 #Pantalla
 numeroPantalla = StringVar()
 
@@ -14,7 +17,30 @@ pantalla.config(bg='black', fg='#03f943', justify='right')
 
 #pulsacionesTeclado
 def escribirPantalla(textoPulsado):
-    numeroPantalla.set(numeroPantalla.get() + textoPulsado) #Lo que haya más el 4
+    global operacion 
+    if operacion != '': #Si el usuario ya pulsó un boton de operacion
+        numeroPantalla.set(textoPulsado)
+        operacion = ''
+    else:
+        numeroPantalla.set(numeroPantalla.get() + textoPulsado) #Lo que haya más el 4
+
+    
+
+def pulsarSuma(num):
+    global operacion 
+    global resultado
+
+    resultado += int(num) #sumar
+    operacion = 'suma'
+
+    numeroPantalla.set(resultado)
+
+def pulsarResultado():
+    global resultado
+
+    numeroPantalla.set(resultado + int(numeroPantalla.get()))
+    resultado = 0
+
 
 #fila 1
 boton7 = Button(miFrame, text='7', width=3, command=lambda: escribirPantalla('7'))
@@ -51,8 +77,8 @@ botonPunto = Button(miFrame, text='.', width=3, command=lambda: escribirPantalla
 botonPunto.grid(row=5, column=1)
 boton0 = Button(miFrame, text='0', width=3, command=lambda: escribirPantalla('0'))
 boton0.grid(row=5, column=2)
-botonIgual = Button(miFrame, text='=', width=3)
+botonIgual = Button(miFrame, text='=', width=3, command=lambda: pulsarResultado())
 botonIgual.grid(row=5, column=3)
-botonSum = Button(miFrame, text='+', width=3)
+botonSum = Button(miFrame, text='+', width=3, command=lambda: pulsarSuma(numeroPantalla.get()))
 botonSum.grid(row=5, column=4)
 root.mainloop()
